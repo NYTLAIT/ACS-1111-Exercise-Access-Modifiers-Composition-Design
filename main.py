@@ -1,10 +1,10 @@
 import random
 
 class Card:
-    def __init__(self, name, suit, value, color):
+    def __init__(self, name, suit, num_value, color):
         self.name = name
         self.suit = suit
-        self.value = value
+        self.num_value = num_value
         self.color = color
 
     def show(self):
@@ -18,20 +18,20 @@ class Deck:
     def fresh_deck(self):
         fresh_deck = []
         suits_colors = [
-            {"suit": "hearts", "color": "red"},
-            {"suit": "clubs", "color": "black"},
-            {"suit": "diamonds", "color": "red"},
-            {"suit": "spades", "color": "black"}
+            ("hearts", "red"),
+            ("clubs", "black"),
+            ("diamonds", "red"),
+            ("spades", "black")
             ]
-        names_values = [()]
-
-        # names = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"]
-
-        # for suit_color in suits_colors:
-        #     for i in range(13):
-        #         card = Card(names[i], suit_color["suit"], i + 1, suit_color["color"])
-        #         fresh_deck.append(card)
-        # self.cards = fresh_deck
+        names_values = [
+            ("Ace", 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), 
+            (8, 8), (9, 9), (10, 10), ("Jack", 11), ("Queen", 12), ("King", 13)
+            ]
+        for suit, color in suits_colors:
+            for name, value in names_values:
+                card = Card(name, suit, value, color)
+                fresh_deck.append(card)
+        self.cards = fresh_deck
 
     def add_card(self, card):
         self.cards.append(card)
